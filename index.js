@@ -21,7 +21,7 @@ for(let i=0;i<9;++i){
             const image = document.createElement('img');
             const cellDiv2 = document.createElement('div');
 
-            pTag.setAttribute('id','cell_{'+(cellID+1)+'}');
+            pTag.setAttribute('id',`cell_${cellID+1}`);
             cellDiv2.classList.add('col','bg-danger');
             cellDiv.classList.add('col','border','bg-warning');
             cellDiv.style.width = "4px";
@@ -90,9 +90,9 @@ for(let i=0;i<9;++i){
 // function for eventListener
 // function to display all the bombs
 function displayAllBombs(cellDiv){
-    if(bombPositions.includes(parseInt(cellDiv.children[0].getAttribute('id').slice(6,-1)))){
+    if(bombPositions.includes(parseInt(cellDiv.children[0].getAttribute('id').slice(5)))){
         bombPositions.forEach((bombPosition)=>{
-            let cell_ = document.getElementById('cell_{'+bombPosition+'}');
+            let cell_ = document.getElementById(`cell_${bombPosition}`);
             cell_.parentNode.classList.replace('bg-warning','bg-danger');
             cell_.classList.replace('bg-warning','bg-danger');
             cell_.style.visibility = 'visible';            
@@ -129,7 +129,7 @@ function refresh(){
     document.getElementById('gameScore').innerHTML="";
     document.getElementById('resultDisplay').innerHTML = "";
     for(let i=1;i<=81;++i){
-        const div_ = document.getElementById('cell_{'+i+'}');
+        const div_ = document.getElementById(`cell_${i}`);
 
         if(div_.style.visibility === 'visible')
             div_.style.visibility = 'hidden';
